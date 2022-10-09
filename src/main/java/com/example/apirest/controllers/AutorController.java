@@ -1,7 +1,7 @@
 package com.example.apirest.controllers;
 
 import com.example.apirest.entities.Autor;
-import com.example.apirest.services.AutorService;
+import com.example.apirest.services.AutorServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 @RequestMapping("api/v1/autores")
 public class AutorController {
-    private final AutorService autorService;
+    private final AutorServiceImpl autorServiceImpl;
 
-    public AutorController(AutorService autorService) {
-        this.autorService = autorService;
+    public AutorController(AutorServiceImpl autorServiceImpl) {
+        this.autorServiceImpl = autorServiceImpl;
     }
 
     @GetMapping("")
     public ResponseEntity<?> getAll(){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(autorService.findAll());
+            return ResponseEntity.status(HttpStatus.OK).body(autorServiceImpl.findAll());
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":Error! Porfavor intente de nuevo.\"}");
         }
@@ -28,7 +28,7 @@ public class AutorController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getOne (@PathVariable Long id){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(autorService.findById(id));
+            return ResponseEntity.status(HttpStatus.OK).body(autorServiceImpl.findById(id));
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":Error! No se encontró el recurso con el id especificado.\"}");
         }
@@ -37,7 +37,7 @@ public class AutorController {
     @PostMapping("")
     public ResponseEntity<?> save(@RequestBody Autor entity){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(autorService.save(entity));
+            return ResponseEntity.status(HttpStatus.OK).body(autorServiceImpl.save(entity));
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":Error. No se pudo crear el recurso.\"}");
         }
@@ -46,7 +46,7 @@ public class AutorController {
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id,@RequestBody Autor entity){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(autorService.update(id, entity));
+            return ResponseEntity.status(HttpStatus.OK).body(autorServiceImpl.update(id, entity));
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":Error. Porfavor intente de nuevo.\"}");
         }
@@ -55,7 +55,7 @@ public class AutorController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         try{
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(autorService.delete(id));
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(autorServiceImpl.delete(id));
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":Error. No se pudo eliminar el recurso.\"}");
         }

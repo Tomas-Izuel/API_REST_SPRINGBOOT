@@ -1,7 +1,7 @@
 package com.example.apirest.controllers;
 
 import com.example.apirest.entities.Domicilio;
-import com.example.apirest.services.DomicilioService;
+import com.example.apirest.services.DomicilioServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 @RequestMapping("api/v1/domicilios")
 public class DomicilioController {
-    private final DomicilioService domicilioService;
+    private final DomicilioServiceImpl domicilioServiceImpl;
 
-    public DomicilioController(DomicilioService domicilioService) {
-        this.domicilioService = domicilioService;
+    public DomicilioController(DomicilioServiceImpl domicilioServiceImpl) {
+        this.domicilioServiceImpl = domicilioServiceImpl;
     }
 
     @GetMapping("")
     public ResponseEntity<?> getAll(){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(domicilioService.findAll());
+            return ResponseEntity.status(HttpStatus.OK).body(domicilioServiceImpl.findAll());
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":Error! Porfavor intente de nuevo.\"}");
         }
@@ -28,7 +28,7 @@ public class DomicilioController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getOne (@PathVariable Long id){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(domicilioService.findById(id));
+            return ResponseEntity.status(HttpStatus.OK).body(domicilioServiceImpl.findById(id));
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":Error! No se encontró el recurso con el id especificado.\"}");
         }
@@ -37,7 +37,7 @@ public class DomicilioController {
     @PostMapping("")
     public ResponseEntity<?> save(@RequestBody Domicilio entity){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(domicilioService.save(entity));
+            return ResponseEntity.status(HttpStatus.OK).body(domicilioServiceImpl.save(entity));
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":Error. No se pudo crear el recurso.\"}");
         }
@@ -46,7 +46,7 @@ public class DomicilioController {
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id,@RequestBody Domicilio entity){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(domicilioService.update(id, entity));
+            return ResponseEntity.status(HttpStatus.OK).body(domicilioServiceImpl.update(id, entity));
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":Error. Porfavor intente de nuevo.\"}");
         }
@@ -55,7 +55,7 @@ public class DomicilioController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         try{
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(domicilioService.delete(id));
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(domicilioServiceImpl.delete(id));
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":Error. No se pudo eliminar el recurso.\"}");
         }
