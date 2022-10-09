@@ -1,0 +1,123 @@
+html{
+    font-family: 'Raleway', sans-serif;
+}
+
+h1{
+    font-size: 3.5rem;
+    font-weight: 600;
+}
+
+h2{
+    font-size: 2.5rem;
+}
+
+h3{
+    font-size: 1.5rem;
+}
+
+.title{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.subtitle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+main{
+    width: 85vw;
+    height: 100vh;
+    margin: 0 auto;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    border-radius: 3rem;
+    padding: 2rem;
+}
+
+.titleMain{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+#app{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 0;
+    gap: 1rem;
+}
+
+.card{
+    width: 35%;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+ion-icon{
+    font-size: 1.5rem;
+}
+
+#form{
+    padding: 3rem;
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 45rem;
+    border: 0.5px solid rgba(0, 0, 0, 0.226);
+    border-radius: 2rem;
+    box-shadow: 0 15px 300px rgba(0, 0, 0, 0.6);
+    display: none;
+    z-index: 1;
+    background-color: white;
+}
+
+.row{
+    gap: 2rem;
+}
+
+.search{
+    border: 0.5px solid rgba(0, 0, 0, 0.308);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.search button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.search input{
+    border: none;
+    width: 15rem;
+}
+
+.search input:focus{
+    border: none;
+    outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
