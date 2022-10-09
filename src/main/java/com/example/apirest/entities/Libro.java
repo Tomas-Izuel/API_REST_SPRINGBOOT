@@ -13,11 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Audited
-public class Libro implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codLibro;
+public class Libro extends Base {
     private String titulo;
     private int fecha;
     private String genero;

@@ -14,10 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @Audited
-public class Persona implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codPersona;
+public class Persona extends Base {
     private String nombre;
     private String apellido;
     private int dni;

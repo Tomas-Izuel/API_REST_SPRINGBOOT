@@ -12,11 +12,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Audited
-public class Domicilio implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codDomicilio;
+public class Domicilio extends Base {
     private String calle;
     private int numero;
 

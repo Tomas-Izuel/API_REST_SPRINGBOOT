@@ -15,9 +15,6 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Audited
-public class Localidad implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codLocalidad;
+public class Localidad extends Base {
     private String denominacion;
 }

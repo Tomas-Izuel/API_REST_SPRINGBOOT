@@ -65,4 +65,8 @@ function crearPersona(){
   return true;
 }
 
+function obtenerPersona(){
+  
+}
+
 obtenerPersonas();
